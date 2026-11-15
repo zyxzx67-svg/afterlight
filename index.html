@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151c17">
+  <meta name="description" content="Mix window rain, aisle wind, and an old clock in a library that stays open past midnight.">
+  <title>Afterlight — Night desk</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./mixer.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="./" aria-label="Afterlight home"><span aria-hidden="true">✦</span> AFTERLIGHT</a>
+    <span class="edition">THE MIDNIGHT LIBRARY</span>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="heading">
+      <h1 id="heading">The night desk.</h1>
+      <p>Build your own library after midnight. Choose a room, then mix the sounds between its shelves.</p>
+    </section>
+    <div class="console">
+      <section class="stage" aria-labelledby="scene-label">
+        <canvas id="library" width="900" height="620" aria-hidden="true"></canvas>
+        <div class="stage-copy">
+          <span id="room-time">12:07 AM</span>
+          <h2 id="scene-label">Reading Room</h2>
+          <p id="scene-description">Rain draws crooked lines down the tall windows.</p>
+        </div>
+      </section>
+      <section class="controls" aria-labelledby="mixer-heading">
+        <div class="panel-header">
+          <h2 id="mixer-heading">Sound desk</h2>
+          <button id="power" type="button" aria-pressed="false"><span class="led" aria-hidden="true"></span><span id="power-label">Start audio</span></button>
+        </div>
+        <p id="status" class="sr-only" role="status"></p>
+        <fieldset class="rooms">
+          <legend>Room</legend>
+          <div class="room-options">
+            <label><input type="radio" name="room" value="reading" checked><span>Reading Room</span></label>
+            <label><input type="radio" name="room" value="stacks"><span>Closed Stacks</span></label>
+            <label><input type="radio" name="room" value="tower"><span>Clock Tower</span></label>
+          </div>
+        </fieldset>
+        <div class="layers">
+          <div class="channel" data-channel="rain">
+            <label for="rain"><span aria-hidden="true">⌇</span> Window rain</label>
+            <output for="rain" id="rain-value">65%</output>
+            <input type="range" id="rain" min="0" max="100" value="65">
+          </div>
+          <div class="channel" data-channel="wind">
+            <label for="wind"><span aria-hidden="true">≋</span> Aisle wind</label>
+            <output for="wind" id="wind-value">24%</output>
+            <input type="range" id="wind" min="0" max="100" value="24">
+          </div>
+          <div class="channel" data-channel="clock">
+            <label for="clock"><span aria-hidden="true">◷</span> Old clock</label>
+            <output for="clock" id="clock-value">30%</output>
+            <input type="range" id="clock" min="0" max="100" value="30">
+          </div>
+        </div>
+        <div class="channel master">
+          <label for="master">Master volume</label>
+          <output for="master" id="master-value">36%</output>
+          <input type="range" id="master" min="0" max="100" value="36">
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer>Afterlight <span aria-hidden="true">✦</span> Kiroween 2026</footer>
+</body>
+</html>
